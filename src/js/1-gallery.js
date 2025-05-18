@@ -89,7 +89,6 @@ function imagesTemplate(images) {
 function renderGallery() {
   gallery.innerHTML = imagesTemplate(images);
 
-  // Ініціалізація SimpleLightbox після рендерингу
   new SimpleLightbox('.gallery a', {
     captions: true,
     captionsData: 'alt',
