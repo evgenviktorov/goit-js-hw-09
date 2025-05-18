@@ -69,3 +69,33 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
+
+function imageTemplate({ preview, original, description }) {
+  return `<li class="gallery-item">
+    <a class="gallery-link" href="${original}">
+      <img
+        class="gallery-image"
+        src="${preview}"
+        alt="${description}"
+      /> 
+    </a>
+  </li>`;
+}
+
+function imagesTemplate(images) {
+  return images.map(imageTemplate).join('');
+}
+
+function renderGallery() {
+  gallery.innerHTML = imagesTemplate(images);
+
+  // Ініціалізація SimpleLightbox після рендерингу
+  new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+    animationSpeed: 300,
+  });
+}
+
+renderGallery();
